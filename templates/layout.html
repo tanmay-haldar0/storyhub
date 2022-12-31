@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}StoryHub!</title>
+        <!-- <meta chatset="utf-8"> -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="/static/style.css">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}">
+        <style>
+            body {
+                background-image: url({{url_for('static', filename='b.png')}});
+                background-attachment: fixed;
+                }
+            .nav{
+                background: #FEEC49;
+                border-bottom: 2px solid black;
+            }
+            .n-item{
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container" style="background:#FFF6D5;
+        border: 2px solid black; padding:0px; padding-bottom:5px">
+            <nav class="navbar nav navbar-expand-lg navbar-light">
+              <div class="collapse navbar-collapse" id="navbarSupportedContent" role="navigation">
+                <h3 style="color: green;
+                font-weight: bold; padding-right: 20px;">StoryHub</h3>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link n-item" href="/">New</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link n-item" href="/top">Top</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link n-item" href="/random">Random</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link n-item" href="/about">About the site</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link n-item" href="/add">Add a story</a>
+                    </li>
+                </ul>
+                <span class="navbar-text" style="color:white">
+                    {% if session.user_id %}
+                        <a href="/logout" style="margin-right:30px; text-decoration:none; font-weight: bolder; color:red">Log out</a>
+                    {% else %}
+                        <a href="/login" style="margin-right:20px; text-decoration:none; font-weight: bolder; color:#218838">Log in</a>
+                        <a href="/register" style="margin-right:30px; text-decoration:none; font-weight: bolder; color:#218838">Register</a>
+                    {% endif %}
+                </span>
+                <form class="form-inline my-2 my-lg-0" action="/search">
+                  <input name="subject" class="form-control mr-sm-2" type="search" placeholder="Search story by word" style="background: #FFF6D5;border-radius: 5px; border: 2px solid black;" aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="border: 2px solid #218838;border-radius: 5px;"><b>Search</b></button>
+                </form>
+
+              </div>
+            </nav>
+            <div style="margin:30px">
+                {% block body %}
+                {% endblock %}
+            </div>
+        </div>
+    </body>
+</html>

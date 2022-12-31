@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}About the site | {% endblock %}
+
+{% block body %}
+
+<h2 style="margin-bottom:10px">Welcome to “StoryHub!”</h2>
+
+<p style="margin-bottom:10px">if you want to upload your storys in internet anyonumusly then this is the best website for you.</p>
+
+<div class="card mb-3" style="width: 18rem;
+background: #FEEC49;
+border: 2px solid black; margin-top:30px">
+  <div class="card-body">
+    <h5 class="card-title">Statistics</h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item" style="background: #FFF6D5; border-top: 2px solid black;">{{ stories_count }} stories</li>
+    <li class="list-group-item" style="background: #FFF6D5; border-top: 2px solid black;">{{ users_count }} users</li>
+    <li class="list-group-item" style="background: #FFF6D5; border-top: 2px solid black;">{{ comments_count }} comments</li>
+  </ul>
+</div>
+
+{% endblock %}
